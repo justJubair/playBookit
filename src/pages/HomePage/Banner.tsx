@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import bannerVidoe from "../../assets/videos/banner-video.mp4";
+import CustomButton from "@/components/CustomButton";
 const Banner = () => {
   return (
     <div>
@@ -19,7 +19,8 @@ const Banner = () => {
         <h4 className="text-sm text-center lg:text-lg text-white mt-4">
           Find, Reserve, and Play at the Best Sports Venues Near You
         </h4>
-        <Button className="bg-secondaryPink mt-2">Book Now</Button>
+
+        <CustomButton className="mt-3">Book Now</CustomButton>
       </div>
     </div>
   );
