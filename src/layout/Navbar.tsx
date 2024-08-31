@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import userProfile from "../assets/images/user-profile.png";
+import CustomButton from "@/components/CustomButton";
 const Navbar = () => {
   const navLinks = (
     <>
@@ -60,15 +61,15 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="matemasie-regular text-primaryYellow ml-2">
+        <h4 className="matemasie-regular text-primaryYellow ml-2">
           Play<span className="text-secondaryPink">Bookit</span>
-        </a>
+        </h4>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex items-center gap-6 font-bold">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end">
+        {/* <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
             role="button"
@@ -95,7 +96,10 @@ const Navbar = () => {
               <a>Logout</a>
             </li>
           </ul>
-        </div>
+        </div> */}
+        <Link to="/login">
+          <CustomButton className="mr-2">Login</CustomButton>
+        </Link>
       </div>
     </div>
   );
