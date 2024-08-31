@@ -1,4 +1,4 @@
-import { useGetAllFacilityQuery } from "@/redux/feature/facility.api";
+import { useGetAllFacilityQuery } from "@/redux/feature/facility/facility.api";
 import FacilityCard from "./FacilityCard";
 import SectionHeadline from "@/components/SectionHeadline";
 
