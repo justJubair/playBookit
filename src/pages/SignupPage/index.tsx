@@ -17,12 +17,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast";
+import { useSignUpMutation } from "@/redux/feature/auth/authApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const SignupPage = () => {
+  const [signUp] = useSignUpMutation();
+  // const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { toast } = useToast();
   const formSchema = z.object({
     name: z.string().min(2, { message: "This field has to be filled" }),
     phone: z.string(),
@@ -47,11 +53,24 @@ const SignupPage = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    // form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      await signUp(values).unwrap();
+      // const user = verifyToken(res?.token);
+      // dispatch(setUser({ user: res, token: res.token }));
+      toast({ title: "Registred successfully", duration: 2000 });
+      form.reset();
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } catch (err) {
+      console.log(err);
+      toast({
+        title: "Something went wrong",
+        variant: "destructive",
+        duration: 2000,
+      });
+    }
   }
   return (
     <div>
@@ -222,7 +241,9 @@ const SignupPage = () => {
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between px-1">
-                    <p className="font-bold text-sm">Don't have an account?</p>
+                    <p className="font-bold text-white text-sm">
+                      Already have an account?
+                    </p>
                     <Link
                       to="/login"
                       className="font-bold text-sm underline text-secondaryPink"

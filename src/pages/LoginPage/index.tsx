@@ -11,17 +11,16 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { useLoginMutation } from "@/redux/feature/auth/authApi";
 import { setUser } from "@/redux/feature/auth/authSlice";
-// import { useLoginMutation } from "@/redux/auth/authApi";
-// import { setUser } from "@/redux/auth/authSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import { verifyToken } from "@/utils/verifyToken";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const LoginPage = () => {
   const [login] = useLoginMutation();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { toast } = useToast();
   const formSchema = z.object({
@@ -52,12 +51,15 @@ const LoginPage = () => {
       dispatch(setUser({ user: user, token: res.token }));
       toast({ title: "Logged in successfully", duration: 2000 });
       form.reset();
+      navigate("/");
     } catch (err) {
       console.log(err);
-      toast({ title: err?.message, variant: "destructive", duration: 2000 });
+      toast({
+        title: "Something went wrong",
+        variant: "destructive",
+        duration: 2000,
+      });
     }
-
-    form.reset();
   }
 
   return (
