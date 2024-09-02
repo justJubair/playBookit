@@ -1,7 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import userProfile from "../assets/images/user-profile.png";
 import CustomButton from "@/components/CustomButton";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { logout, selectCurrentUser } from "@/redux/feature/auth/authSlice";
+import { TUser } from "@/types";
 const Navbar = () => {
+  const user: TUser | null = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
   const navLinks = (
     <>
       <li className="lg:text-primaryYellow">
@@ -69,37 +74,37 @@ const Navbar = () => {
         <ul className="flex items-center gap-6 font-bold">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        {/* <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img alt="user profile picture" src={userProfile} />
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img alt="user profile picture" src={userProfile} />
+              </div>
             </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            >
+              <li>
+                <a className="justify-between">{user?.userEmail}</a>
+              </li>
+              <li>
+                <a>{user?.userRole}</a>
+              </li>
+              <li onClick={() => dispatch(logout())}>
+                <a>Logout</a>
+              </li>
+            </ul>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div> */}
-        <Link to="/login">
-          <CustomButton className="mr-2">Login</CustomButton>
-        </Link>
+        ) : (
+          <Link to="/login">
+            <CustomButton className="mr-2">Login</CustomButton>
+          </Link>
+        )}
       </div>
     </div>
   );
