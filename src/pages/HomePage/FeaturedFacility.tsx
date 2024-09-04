@@ -11,7 +11,7 @@ const FeaturedFacility = () => {
   return (
     <div>
       <SectionHeadline>Our Facilities</SectionHeadline>
-      <div className="flex flex-wrap gap-4 items-center justify-center px-4">
+      <div className="flex gap-4 items-center justify-center px-4 flex-wrap">
         {facilityData?.data?.slice(0, 6).map((facility) => (
           <FacilityCard facility={facility} key={facility?._id} />
         ))}
