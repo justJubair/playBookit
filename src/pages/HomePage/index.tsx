@@ -1,7 +1,7 @@
 import Banner from "./Banner";
 import FeaturedFacility from "./FeaturedFacility";
 import HowItWorks from "./HowItWorks";
-import Testimonials from "./Testimonial";
+import Testimonials from "./Testimonial/Testimonial";
 
 const HomePage = () => {
   return (
