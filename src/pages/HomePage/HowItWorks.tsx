@@ -34,7 +34,7 @@ const HowItWorks = () => {
       <div className="flex items-center justify-center gap-4 mx-auto flex-col flex-wrap px-4 md:flex-row">
         {steps.map((step, index) => (
           <div key={step.id} className="">
-            <div className="bg-black p-6 lg:w-96 lg:h-72 rounded-lg shadow-lg  flex flex-col items-center justify-center">
+            <div className="bg-black p-6 lg:w-96 lg:h-72 2xl:w-[500px] rounded-lg shadow-lg  flex flex-col items-center justify-center">
               <div className="mb-4">{step.icon}</div>
               <h3 className="text-2xl font-semibold text-primaryYellow text-center">
                 {step.title}

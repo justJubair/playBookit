@@ -9,7 +9,7 @@ const FeaturedFacility = () => {
     return <p>loading...</p>;
   }
   return (
-    <div>
+    <div className="mt-20">
       <SectionHeadline>Our Facilities</SectionHeadline>
       <div className="flex gap-4 items-center justify-center px-4 flex-wrap">
         {facilityData?.data?.slice(0, 6).map((facility) => (

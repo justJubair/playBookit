@@ -11,7 +11,7 @@ type TFacilityProps = {
 const FacilityCard = ({ facility }: TFacilityProps) => {
   return (
     <div>
-      <div className="card bg-base-100 sm:w-96 h-64 md:w-80 md:h-80 lg:w-96 lg:h-80 image-full shadow-xl">
+      <div className="card bg-secondaryPink sm:w-96 h-64 md:w-80 md:h-80 lg:w-96 lg:h-80 image-full shadow-xl">
         <figure>
           <img
             className="w-full h-full object-cover"
