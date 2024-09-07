@@ -30,7 +30,7 @@ const offers = [
 const SpecialOffers = () => {
   return (
     <div className="mb-28 mt-28 px-8 bg-gradient-to-r from-primaryYellow/20 to-secondaryPink/20 py-10  text-white">
-      <SectionHeadline className="mt-0">
+      <SectionHeadline className="-mt-0">
         Special Offers & Discounts
       </SectionHeadline>
       <Swiper

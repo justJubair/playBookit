@@ -1,5 +1,6 @@
 import DashboardLayout from "@/layout/DashboardLayout";
 import MainLayout from "@/layout/MainLayout";
+import UserProfile from "@/pages/Dashboard/UserProfile/UserProfile";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
 import SignupPage from "@/pages/SignupPage";
@@ -25,8 +26,8 @@ export const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
-        path: "/dashboard/user-profile",
-        element: <p>user profile</p>,
+        path: "/dashboard",
+        element: <UserProfile />,
       },
     ],
   },
