@@ -7,7 +7,7 @@ import { TUser } from "@/types";
 const Navbar = () => {
   const user: TUser | null = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
-  console.log(user);
+  // console.log(user);
   const navLinks = (
     <>
       <li className="lg:text-primaryYellow hover:underline">

@@ -8,7 +8,7 @@ const baseQuery = fetchBaseQuery({
     const token = (getState() as RootState).auth.token;
 
     if (token) {
-      headers.set("authorization", `${token}`);
+      headers.set("Authorization", `Bearer ${token}`);
     }
     return headers;
   },

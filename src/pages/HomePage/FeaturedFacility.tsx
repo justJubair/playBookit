@@ -6,7 +6,11 @@ const FeaturedFacility = () => {
   const { data: facilityData, isLoading } = useGetAllFacilityQuery(undefined);
 
   if (isLoading) {
-    return <p>loading...</p>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <span className="loading loading-spinner loading-lg"></span>;
+      </div>
+    );
   }
   return (
     <div className="mt-20">

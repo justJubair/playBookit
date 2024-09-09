@@ -8,8 +8,8 @@ const Sidebar = () => {
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   const menuItems = [
-    { icon: Home, text: "Dashboard" },
-    { icon: BarChart2, text: "Analytics" },
+    { icon: Home, text: "Dashboard", path: "/dashboard" },
+    { icon: BarChart2, text: "Bookings", path: "/dashboard/user/bookings" },
     { icon: Users, text: "Users" },
     { icon: Settings, text: "Settings" },
   ];
@@ -42,7 +42,7 @@ const Sidebar = () => {
           <nav className="flex-1 px-2 py-4 space-y-2">
             {menuItems.map((item, index) => (
               <Link
-                to="/"
+                to={item.path as string}
                 key={index}
                 className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-md transition duration-150 ease-in-out"
               >
