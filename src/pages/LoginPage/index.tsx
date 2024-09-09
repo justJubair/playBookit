@@ -46,9 +46,11 @@ const LoginPage = () => {
 
     try {
       const res = await login(values).unwrap();
-      console.log(res);
+      // console.log(res);
       const user = verifyToken(res?.token);
-      dispatch(setUser({ user: user, token: res.token }));
+      dispatch(
+        setUser({ user: user, token: res.token, userDetails: res.data })
+      );
       toast({ title: "Logged in successfully", duration: 2000 });
       form.reset();
       navigate("/");

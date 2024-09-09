@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Home, BarChart2, Users, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,27 +28,27 @@ const Sidebar = () => {
       <div
         className={`fixed inset-y-0 left-0 transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 transition duration-200 ease-in-out z-10 w-52 bg-black overflow-y-auto`}
+        } lg:translate-x-0 transition duration-200 ease-in-out z-10 bg-black overflow-y-auto`}
       >
         <div className="flex flex-col h-full">
-          <div className="flex items-center  rounded-xl mt-2 ml-2 justify-center h-12">
-            <span
+          <Link to="/" className="mt-4 mb-2">
+            <p
               className="text-secondaryPink
-             text-xl font-semibold matemasie-regular"
+             text-xl text-center font-semibold matemasie-regular"
             >
               Play<span className="text-primaryYellow">BookIt</span>
-            </span>
-          </div>
+            </p>
+          </Link>
           <nav className="flex-1 px-2 py-4 space-y-2">
             {menuItems.map((item, index) => (
-              <a
+              <Link
+                to="/"
                 key={index}
-                href="#"
                 className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-md transition duration-150 ease-in-out"
               >
                 <item.icon className="mr-3 h-6 w-6 text-secondaryPink" />
                 <span>{item.text}</span>
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

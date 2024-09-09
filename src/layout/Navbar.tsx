@@ -7,9 +7,10 @@ import { TUser } from "@/types";
 const Navbar = () => {
   const user: TUser | null = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
+  console.log(user);
   const navLinks = (
     <>
-      <li className="lg:text-primaryYellow">
+      <li className="lg:text-primaryYellow hover:underline">
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "text-secondaryPink" : "")}
@@ -17,7 +18,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="lg:text-primaryYellow">
+      <li className="lg:text-primaryYellow hover:underline">
         <NavLink
           to="/services"
           className={({ isActive }) => (isActive ? "text-secondaryPink" : "")}
@@ -25,7 +26,7 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
-      <li className="lg:text-primaryYellow">
+      <li className="lg:text-primaryYellow hover:underline">
         <NavLink
           to="/dashboard"
           className={({ isActive }) => (isActive ? "text-secondaryPink" : "")}
