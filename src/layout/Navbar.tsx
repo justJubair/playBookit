@@ -37,7 +37,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="absolute z-10 top-0 navbar bg-transparent">
+    <div className="absolute z-30 top-0 navbar bg-transparent">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -67,9 +67,9 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <h4 className="matemasie-regular text-primaryYellow ml-2">
+        <Link to="/" className="matemasie-regular text-primaryYellow ml-2">
           Play<span className="text-secondaryPink">Bookit</span>
-        </h4>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="flex items-center gap-6 font-bold">{navLinks}</ul>

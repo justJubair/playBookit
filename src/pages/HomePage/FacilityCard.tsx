@@ -1,7 +1,9 @@
 import CustomButton from "@/components/CustomButton";
+import { Link } from "react-router-dom";
 
 type TFacilityProps = {
   facility: {
+    _id: string;
     name: string;
     img: string;
     description: string;
@@ -22,9 +24,12 @@ const FacilityCard = ({ facility }: TFacilityProps) => {
         <div className="card-body">
           <h2 className="card-title">{facility?.name}</h2>
           <p>{facility?.description}</p>
-          <div className="card-actions justify-end">
+          <Link
+            to={`/facility/${facility._id}`}
+            className="card-actions justify-end"
+          >
             <CustomButton>Details</CustomButton>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
