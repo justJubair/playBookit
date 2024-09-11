@@ -1,5 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
-import userCardImg from "../../../assets/images/userCard.png";
+import userCardImg from "../../../../assets/images/userCard.png";
 import { useAppSelector } from "@/redux/hooks";
 import { selectCurrentUserDetails } from "@/redux/feature/auth/authSlice";
 import { TUserDetails } from "@/types";

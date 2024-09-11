@@ -1,17 +1,29 @@
 import { useState } from "react";
 import { Menu, X, Home, BarChart2, Users, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "@/redux/hooks";
+import { selectCurrentUser } from "@/redux/feature/auth/authSlice";
+import { TUser } from "@/types";
 
 const Sidebar = () => {
+  const user: TUser | null = useAppSelector(selectCurrentUser);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
-  const menuItems = [
+  const adminMenuItems = [
     { icon: Home, text: "Dashboard", path: "/dashboard" },
-    { icon: BarChart2, text: "Bookings", path: "/dashboard/user/bookings" },
+    {
+      icon: BarChart2,
+      text: "Facilities",
+      path: "/dashboard/admin/facilities",
+    },
     { icon: Users, text: "Users" },
     { icon: Settings, text: "Settings" },
+  ];
+  const userMenuItems = [
+    { icon: Home, text: "Dashboard", path: "/dashboard" },
+    { icon: BarChart2, text: "Bookings", path: "/dashboard/user/bookings" },
   ];
 
   return (
@@ -40,7 +52,28 @@ const Sidebar = () => {
             </p>
           </Link>
           <nav className="flex-1 px-2 py-4 space-y-2">
-            {menuItems.map((item, index) => (
+            {user?.userRole === "admin"
+              ? adminMenuItems.map((item, index) => (
+                  <Link
+                    to={item.path as string}
+                    key={index}
+                    className="flex items-center px-4 py-2 text-gray-100 hover:underline  rounded-md transition duration-150 ease-in-out"
+                  >
+                    <item.icon className="mr-3 h-6 w-6 text-secondaryPink" />
+                    <span>{item.text}</span>
+                  </Link>
+                ))
+              : userMenuItems.map((item, index) => (
+                  <Link
+                    to={item.path as string}
+                    key={index}
+                    className="flex items-center px-4 py-2 text-gray-100 hover:underline rounded-md transition duration-150 ease-in-out"
+                  >
+                    <item.icon className="mr-3 h-6 w-6 text-secondaryPink" />
+                    <span>{item.text}</span>
+                  </Link>
+                ))}
+            {/* {menuItems.map((item, index) => (
               <Link
                 to={item.path as string}
                 key={index}
@@ -50,6 +83,16 @@ const Sidebar = () => {
                 <span>{item.text}</span>
               </Link>
             ))}
+            {menuItems.map((item, index) => (
+              <Link
+                to={item.path as string}
+                key={index}
+                className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700 rounded-md transition duration-150 ease-in-out"
+              >
+                <item.icon className="mr-3 h-6 w-6 text-secondaryPink" />
+                <span>{item.text}</span>
+              </Link>
+            ))} */}
           </nav>
         </div>
       </div>

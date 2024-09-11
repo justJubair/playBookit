@@ -93,9 +93,7 @@ const Navbar = () => {
               <li>
                 <a className="justify-between">{user?.userEmail}</a>
               </li>
-              <li>
-                <a>{user?.userRole}</a>
-              </li>
+
               <li onClick={() => dispatch(logout())}>
                 <a>Logout</a>
               </li>

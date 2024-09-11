@@ -1,7 +1,8 @@
 import DashboardLayout from "@/layout/DashboardLayout";
 import MainLayout from "@/layout/MainLayout";
-import UserBookings from "@/pages/Dashboard/UserBookings/UserBookings";
-import UserProfile from "@/pages/Dashboard/UserProfile/UserProfile";
+import ManageFacility from "@/pages/Dashboard/Admin/ManageFacility/ManageFacility";
+import UserBookings from "@/pages/Dashboard/User/UserBookings/UserBookings";
+import UserProfile from "@/pages/Dashboard/User/UserProfile/UserProfile";
 import FacilityPage from "@/pages/FacilityPage";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/user/bookings",
         element: <UserBookings />,
+      },
+      {
+        path: "/dashboard/admin/facilities",
+        element: <ManageFacility />,
       },
     ],
   },
